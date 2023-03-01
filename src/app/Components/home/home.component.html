@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row p-5">
+        <div class="col-md-8 p-3">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <mat-form-field appearance="outline">
+                        <mat-label>URL or Text</mat-label>
+                        <input matInput placeholder="URL or Text" required [(ngModel)]="value">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-hint>Add a URL Or Text</mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <br>
+                    <div *ngIf="value">
+                        <ngx-qrcode id="qr" #parent [width]="270" [elementType]="elementType" [colorDark]="'#000000'"
+                            [colorLight]="'#ffffff'" [errorCorrectionLevel]="correctionLevel" [value]="value"
+                            alt="Demo QR Code" Class="bshadow">
+                        </ngx-qrcode>
+                        <br>
+                        <button class="btn btn-info" (click)="saveAsImage(parent)">Download QR</button>
+                        <button class="btn btn-secondary float-end" printSectionId="qr" ngxPrint>Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
